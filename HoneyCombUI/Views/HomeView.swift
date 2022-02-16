@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    // MARK: Current Puzzle
+    @State var currentPuzzle: Puzzle = puzzles[0]
     
     var body: some View {
         VStack {
@@ -22,8 +24,25 @@ struct HomeView: View {
                             .font(.title)
                             .foregroundColor(Color.black)
                     }
+                    
+                    Spacer()
+                    
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "speaker.wave.2.fill")
+                            .font(.title3)
+                            .padding(10)
+                            .background(Color("customBlue"), in: Circle())
+                            .foregroundColor(Color.white)
+                    }
+                }
+                .overlay {
+                    Text("Level 1")
+                        .fontWeight(.bold)
                 }
                 
+                // MARK: Puzzle Image
             }
             .padding()
             .background(Color.white, in: RoundedRectangle(cornerRadius: 15))

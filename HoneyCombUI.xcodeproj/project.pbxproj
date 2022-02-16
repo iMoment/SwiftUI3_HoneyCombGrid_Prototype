@@ -12,6 +12,7 @@
 		917CBE5427BD9468006D91FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 917CBE5327BD9468006D91FA /* Assets.xcassets */; };
 		917CBE5727BD9468006D91FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 917CBE5627BD9468006D91FA /* Preview Assets.xcassets */; };
 		917CBE6027BD9792006D91FA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBE5F27BD9792006D91FA /* HomeView.swift */; };
+		917CBE6227BD9F1C006D91FA /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBE6127BD9F1C006D91FA /* Puzzle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		917CBE5327BD9468006D91FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		917CBE5627BD9468006D91FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		917CBE5F27BD9792006D91FA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		917CBE6127BD9F1C006D91FA /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		917CBE5E27BD977F006D91FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				917CBE6127BD9F1C006D91FA /* Puzzle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				917CBE6027BD9792006D91FA /* HomeView.swift in Sources */,
+				917CBE6227BD9F1C006D91FA /* Puzzle.swift in Sources */,
 				917CBE5227BD9466006D91FA /* ContentView.swift in Sources */,
 				917CBE5027BD9466006D91FA /* HoneyCombUIApp.swift in Sources */,
 			);
