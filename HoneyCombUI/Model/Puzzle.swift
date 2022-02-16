@@ -16,6 +16,6 @@ struct Puzzle: Identifiable {
 }
 
 var puzzles: [Puzzle] = [
-    Puzzle(imageName: "crown", answer: "Crown", jumbledWord: "CUROROWKN"),
+    Puzzle(imageName: "crown5", answer: "Crown", jumbledWord: "CUROROWKN"),
     Puzzle(imageName: "shower", answer: "Shower", jumbledWord: "SHAOWIERL")
 ]

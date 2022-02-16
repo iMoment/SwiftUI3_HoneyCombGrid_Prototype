@@ -43,13 +43,42 @@ struct HomeView: View {
                 }
                 
                 // MARK: Puzzle Image
+                Image(currentPuzzle.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 200)
+                    .padding(.vertical)
+                
+                // MARK: Puzzle Fill Blanks
+                HStack(spacing: 10) {
+                    ForEach(0..<currentPuzzle.answer.count, id: \.self) { index in
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color("customBlue").opacity(0.2))
+                                .frame(height: 60)
+                        }
+                    }
+                }
             }
             .padding()
             .background(Color.white, in: RoundedRectangle(cornerRadius: 15))
             
+            // MARK: Custom Honey Comb Grid View
+            
+            // MARK: Next Button
+            Button {
+                
+            } label: {
+                Text("Next")
+                    .font(.title3.bold())
+                    .foregroundColor(Color.white)
+                    .padding(.vertical)
+                    .frame(maxWidth: .infinity)
+                    .background(Color("customBlue"), in: RoundedRectangle(cornerRadius: 15))
+            }
         }
         .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color("background"))
     }
 }
