@@ -65,7 +65,8 @@ struct HomeView: View {
             
             // MARK: Custom Honey Comb Grid View
             HoneyCombGridView(items: currentPuzzle.letters) { item in
-                Text(item.value)
+                // MARK: Hexagon Shape
+                HexagonShape()
             }
             
             // MARK: Next Button

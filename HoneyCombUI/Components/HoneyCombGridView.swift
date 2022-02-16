@@ -62,6 +62,32 @@ struct HoneyCombGridView<Content: View, Item>: View where Item: RandomAccessColl
                     itemsAtRow.removeAll()
                 }
             }
+            if count == items.count {
+                if let last = rows.last {
+                    if rows.count >= 2 {
+                        let previous = (rows[rows.count - 2].count == 4 ? 3 : 4)
+                        
+                        if (last.count + itemsAtRow.count) <= previous {
+                            rows[rows.count - 1].append(contentsOf: itemsAtRow)
+                            itemsAtRow.removeAll()
+                        } else {
+                            rows.append(itemsAtRow)
+                            itemsAtRow.removeAll()
+                        }
+                    } else {
+                        if (last.count + itemsAtRow.count) <= 4 {
+                            rows[rows.count - 1].append(contentsOf: itemsAtRow)
+                            itemsAtRow.removeAll()
+                        } else {
+                            rows.append(itemsAtRow)
+                            itemsAtRow.removeAll()
+                        }
+                    }
+                } else {
+                    rows.append(itemsAtRow)
+                    itemsAtRow.removeAll()
+                }
+            }
         }
         
         return rows
