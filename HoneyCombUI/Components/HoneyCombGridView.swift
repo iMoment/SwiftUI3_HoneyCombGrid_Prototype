@@ -18,8 +18,10 @@ struct HoneyCombGridView<Content: View, Item>: View where Item: RandomAccessColl
         self.items = items
     }
     
+    @State var width: CGFloat = 0
+    
     var body: some View {
-        VStack {
+        VStack(spacing: -20) {
             
             ForEach(setUpGrid().indices, id: \.self) { index in
                 
@@ -28,11 +30,22 @@ struct HoneyCombGridView<Content: View, Item>: View where Item: RandomAccessColl
                     ForEach(setUpGrid()[index].indices, id: \.self) { subIndex in
                         
                         content(setUpGrid()[index][subIndex])
+                            .frame(width: (width) / 4)
                     }
                 }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .coordinateSpace(name: "HoneyComb")
+        .overlay {
+            GeometryReader { proxy in
+                Color.clear
+                    .preference(key: WidthKey.self, value: proxy.frame(in: .named("HoneyComb")).width - proxy.frame(in: .named("HoneyComb")).minX)
+                    .onPreferenceChange(WidthKey.self) { width in
+                        self.width = width
+                    }
+            }
+        }
     }
     
     // MARK: Grids, 4,3,4,3 pattern
@@ -97,5 +110,14 @@ struct HoneyCombGridView<Content: View, Item>: View where Item: RandomAccessColl
 struct HoneyCombGridView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+// MARK: Width Preference Key
+struct WidthKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
     }
 }

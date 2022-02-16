@@ -67,6 +67,7 @@ struct HomeView: View {
             HoneyCombGridView(items: currentPuzzle.letters) { item in
                 // MARK: Hexagon Shape
                 HexagonShape()
+                    .aspectRatio(contentMode: .fit)
             }
             
             // MARK: Next Button
@@ -78,7 +79,7 @@ struct HomeView: View {
                     .foregroundColor(Color.white)
                     .padding(.vertical)
                     .frame(maxWidth: .infinity)
-                    .background(Color("customBlue"), in: RoundedRectangle(cornerRadius: 15))
+                    .background(Color("customGold"), in: RoundedRectangle(cornerRadius: 15))
             }
         }
         .padding()
