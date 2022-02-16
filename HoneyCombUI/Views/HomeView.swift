@@ -64,6 +64,9 @@ struct HomeView: View {
             .background(Color.white, in: RoundedRectangle(cornerRadius: 15))
             
             // MARK: Custom Honey Comb Grid View
+            HoneyCombGridView(items: currentPuzzle.letters) { item in
+                Text(item.value)
+            }
             
             // MARK: Next Button
             Button {
@@ -80,6 +83,15 @@ struct HomeView: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color("background"))
+        .onAppear {
+            generateLetters()
+        }
+    }
+    
+    func generateLetters() {
+        currentPuzzle.jumbledWord.forEach { character in
+            currentPuzzle.letters.append(Letter(value: String(character)))
+        }
     }
 }
 

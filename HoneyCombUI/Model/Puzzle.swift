@@ -13,6 +13,14 @@ struct Puzzle: Identifiable {
     var imageName: String
     var answer: String
     var jumbledWord: String
+    
+    // MARK: Splitting jumbled word
+    var letters: [Letter] = []
+}
+
+struct Letter: Identifiable {
+    var id: String = UUID().uuidString
+    var value: String
 }
 
 var puzzles: [Puzzle] = [
