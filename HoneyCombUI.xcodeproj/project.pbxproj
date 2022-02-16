@@ -11,6 +11,7 @@
 		917CBE5227BD9466006D91FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBE5127BD9466006D91FA /* ContentView.swift */; };
 		917CBE5427BD9468006D91FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 917CBE5327BD9468006D91FA /* Assets.xcassets */; };
 		917CBE5727BD9468006D91FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 917CBE5627BD9468006D91FA /* Preview Assets.xcassets */; };
+		917CBE6027BD9792006D91FA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBE5F27BD9792006D91FA /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		917CBE5127BD9466006D91FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		917CBE5327BD9468006D91FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		917CBE5627BD9468006D91FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		917CBE5F27BD9792006D91FA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,8 @@
 			children = (
 				917CBE4F27BD9466006D91FA /* HoneyCombUIApp.swift */,
 				917CBE5127BD9466006D91FA /* ContentView.swift */,
+				917CBE5E27BD977F006D91FA /* Model */,
+				917CBE5D27BD977B006D91FA /* Views */,
 				917CBE5327BD9468006D91FA /* Assets.xcassets */,
 				917CBE5527BD9468006D91FA /* Preview Content */,
 			);
@@ -65,6 +69,21 @@
 				917CBE5627BD9468006D91FA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		917CBE5D27BD977B006D91FA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				917CBE5F27BD9792006D91FA /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		917CBE5E27BD977F006D91FA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				917CBE6027BD9792006D91FA /* HomeView.swift in Sources */,
 				917CBE5227BD9466006D91FA /* ContentView.swift in Sources */,
 				917CBE5027BD9466006D91FA /* HoneyCombUIApp.swift in Sources */,
 			);
