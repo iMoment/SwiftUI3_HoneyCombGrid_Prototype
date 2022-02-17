@@ -31,6 +31,7 @@ struct HoneyCombGridView<Content: View, Item>: View where Item: RandomAccessColl
                         
                         content(setUpGrid()[index][subIndex])
                             .frame(width: (width) / 4)
+                            .offset(x: setOffset(index: index))
                     }
                 }
             }
@@ -46,6 +47,26 @@ struct HoneyCombGridView<Content: View, Item>: View where Item: RandomAccessColl
                     }
             }
         }
+    }
+    
+    // MARK: To avoid irregular grid layout
+    func setOffset(index: Int) -> CGFloat {
+        let current = setUpGrid()[index].count
+        let offset = (width / 4) / 2
+        
+        if index != 0 {
+            let previous = setUpGrid()[index - 1].count
+            
+            if current == 1 && previous % 2 == 0 {
+                return 0
+            }
+            
+            if previous % current == 0 {
+                return -offset - 2
+            }
+        }
+        
+        return 0
     }
     
     // MARK: Grids, 4,3,4,3 pattern

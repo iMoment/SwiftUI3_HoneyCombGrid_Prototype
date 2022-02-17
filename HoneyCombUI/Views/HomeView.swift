@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     // MARK: Current Puzzle
     @State var currentPuzzle: Puzzle = puzzles[0]
+    @State var selectedLetters: [Letter] = []
     
     var body: some View {
         VStack {
@@ -47,6 +48,7 @@ struct HomeView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 200)
+                    .clipShape(RoundedRectangle(cornerRadius: currentPuzzle.imageName == "shower" ? 100 : 0))
                     .padding(.vertical)
                 
                 // MARK: Puzzle Fill Blanks
@@ -54,8 +56,16 @@ struct HomeView: View {
                     ForEach(0..<currentPuzzle.answer.count, id: \.self) { index in
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color("customBlue").opacity(0.2))
+                                .fill(Color("customBlue").opacity(selectedLetters.count > index ? 1 : 0.2))
                                 .frame(height: 60)
+                            
+                            // MARK: Letter Display
+                            if selectedLetters.count > index {
+                                Text(selectedLetters[index].value)
+                                    .font(.title)
+                                    .fontWeight(.black)
+                                    .foregroundColor(Color.white)
+                            }
                         }
                     }
                 }
@@ -66,13 +76,32 @@ struct HomeView: View {
             // MARK: Custom Honey Comb Grid View
             HoneyCombGridView(items: currentPuzzle.letters) { item in
                 // MARK: Hexagon Shape
-                HexagonShape()
-                    .aspectRatio(contentMode: .fit)
+                ZStack {
+                    HexagonShape()
+                        .fill(isSelected(letter: item) ? Color("customGold") : Color.white)
+                        .aspectRatio(contentMode: .fit)
+                        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 10, y: 5)
+                        .shadow(color: Color.black.opacity(0.1), radius: 5, x: -5, y: 8)
+                    
+                    Text(item.value)
+                        .font(.largeTitle)
+                        .fontWeight(.black)
+                        .foregroundColor(isSelected(letter: item) ? Color.white : Color.gray.opacity(0.5))
+                    
+                }
+                .contentShape(HexagonShape())
+                .onTapGesture {
+                    // MARK: Adding Letter
+                    addLetter(letter: item)
+                }
             }
             
             // MARK: Next Button
             Button {
-                
+                // MARK: Changing to next puzzle
+                selectedLetters.removeAll()
+                currentPuzzle = puzzles[1]
+                generateLetters()
             } label: {
                 Text("Next")
                     .font(.title3.bold())
@@ -81,12 +110,33 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color("customGold"), in: RoundedRectangle(cornerRadius: 15))
             }
+            .disabled(selectedLetters.count != currentPuzzle.answer.count)
+            .opacity(selectedLetters.count != currentPuzzle.answer.count ? 0.6 : 1)
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color("background"))
         .onAppear {
             generateLetters()
+        }
+    }
+    
+    func addLetter(letter: Letter) {
+        withAnimation {
+            if isSelected(letter: letter) {
+                selectedLetters.removeAll { currentLetter in
+                    return currentLetter.id == letter.id
+                }
+            } else {
+                if selectedLetters.count == currentPuzzle.answer.count { return }
+                selectedLetters.append(letter)
+            }
+        }
+    }
+    
+    func isSelected(letter: Letter) -> Bool {
+        return selectedLetters.contains { currentLetter in
+            return currentLetter.id == letter.id
         }
     }
     
